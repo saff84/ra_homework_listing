@@ -2,23 +2,36 @@ import React, { ReactComponentElement } from "react";
 import ListItem from "./ListItem";
 
 interface ListingProps  {
-    props: Object,
     items: Object[],
-    item : Object,
-    listing_id: Number,
+    item: {
+          listing_id: number,
+          url: string,
+          MainImage: object,
+          title: string,
+          currency_code: string,
+          price: string,
+          quantity: number,
+          state: string,
+        },
 }
 
-export default function Listing({props}: ListingProps) {
-    const items  = [];
+export default function Listing({items} : ListingProps){
+    
+
+    // items.map( { item }: ListingProps ) => {
+    //     return (
+    //         <div className="item-list">
+    //             <ListItem key={item.listing_id} item={item} />
+    //         </div>
+
+    //             )
+    // }
+
     return (
         <div className="item-list">
-            {items.map(( item ) => (
+            {items.map(( {item }: ListingProps ) => (
                 <ListItem key={item.listing_id} item={item} />
             ))}
         </div>
     )
 }
-
-Listing.defaultProps = {
-    items: [],
-};

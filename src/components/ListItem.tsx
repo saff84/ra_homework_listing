@@ -1,11 +1,24 @@
 import React from "react";
 
+interface ListingProps  {
+    item: {
+          listing_id: number,
+          url: string,
+          MainImage: object,
+          title: string,
+          currency_code: string,
+          price: string,
+          quantity: number,
+          state: string,
+        },
+}
 
-export default function ListItem({ item }) {
-    const { listing_id, url, MainImage, title, currency_code, price, quantity } = item;
+
+export default function ListItem({ item }: ListingProps) {
+    const { listing_id, url, MainImage, title, currency_code, price, quantity, state } = item;
     console.log(item);
 
-    if (item.state !== 'active') {
+    if (state !== 'active') {
         return null;
     }
     let name = title.length > 50 ? `${title.slice(0, 50)}...` : title;
