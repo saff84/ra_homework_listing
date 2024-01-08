@@ -1,10 +1,12 @@
 import React from "react";
 
-interface ListingProps  {
+export interface Item  {
     item: {
           listing_id: number,
           url: string,
-          MainImage: object,
+          MainImage: {
+            url_570xN: string,
+          },
           title: string,
           currency_code: string,
           price: string,
@@ -14,9 +16,8 @@ interface ListingProps  {
 }
 
 
-export default function ListItem({ item }: ListingProps) {
+export default function ListItem({ item }: Item) {
     const { listing_id, url, MainImage, title, currency_code, price, quantity, state } = item;
-    console.log(item);
 
     if (state !== 'active') {
         return null;
